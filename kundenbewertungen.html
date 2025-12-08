@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kundenbewertungen - Eisbedarf</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       Eisbedarf Reviews Section - Namespaced CSS
+       ============================================ */
+
+    /* CSS Custom Properties for easy customization */
+    :root {
+      --eb-primary-text: #1a1a1a;
+      --eb-secondary-text: #666666;
+      --eb-background: #fafafa;
+      --eb-card-background: #ffffff;
+      --eb-accent: #4285f4;
+      --eb-star-color: #fbbc04;
+      --eb-border: #e5e5e5;
+      --eb-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --eb-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --eb-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --eb-radius: 12px;
+      --eb-transition: 0.3s ease;
+    }
+
+    /* Reset for standalone usage */
+    .eb-reviews *,
+    .eb-reviews *::before,
+    .eb-reviews *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Main Section */
+    .eb-reviews {
+      font-family: var(--eb-font-family);
+      background-color: var(--eb-background);
+      padding: 80px 24px;
+      color: var(--eb-primary-text);
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .eb-reviews__container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .eb-reviews__header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .eb-reviews__title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--eb-primary-text);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Rating Summary */
+    .eb-reviews__summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--eb-card-background);
+      padding: 12px 24px;
+      border-radius: 50px;
+      box-shadow: var(--eb-shadow-subtle);
+      border: 1px solid var(--eb-border);
+    }
+
+    .eb-reviews__rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eb-reviews__rating-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--eb-primary-text);
+    }
+
+    .eb-reviews__rating-stars {
+      display: flex;
+      gap: 2px;
+    }
+
+    .eb-reviews__rating-stars svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--eb-star-color);
+    }
+
+    .eb-reviews__rating-stars svg.eb-star--partial {
+      fill: url(#eb-star-gradient);
+    }
+
+    .eb-reviews__source {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--eb-secondary-text);
+      font-size: 0.9rem;
+      padding-left: 16px;
+      border-left: 1px solid var(--eb-border);
+    }
+
+    .eb-reviews__google-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Grid */
+    .eb-reviews__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* Card */
+    .eb-reviews__card {
+      background: var(--eb-card-background);
+      border-radius: var(--eb-radius);
+      padding: 28px;
+      box-shadow: var(--eb-shadow-subtle);
+      border: 1px solid var(--eb-border);
+      transition: transform var(--eb-transition), box-shadow var(--eb-transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .eb-reviews__card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--eb-shadow-hover);
+    }
+
+    .eb-reviews__card:focus-within {
+      outline: 2px solid var(--eb-accent);
+      outline-offset: 2px;
+    }
+
+    /* Stars in Card */
+    .eb-reviews__stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .eb-reviews__stars svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--eb-star-color);
+    }
+
+    /* Review Text */
+    .eb-reviews__text {
+      font-size: 0.95rem;
+      color: var(--eb-secondary-text);
+      line-height: 1.7;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+
+    /* Author */
+    .eb-reviews__author {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--eb-primary-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eb-reviews__author::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      background: var(--eb-accent);
+      border-radius: 1px;
+    }
+
+    /* Responsive: Tablet */
+    @media (max-width: 992px) {
+      .eb-reviews__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .eb-reviews {
+        padding: 60px 20px;
+      }
+    }
+
+    /* Responsive: Mobile */
+    @media (max-width: 640px) {
+      .eb-reviews__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .eb-reviews {
+        padding: 48px 16px;
+      }
+
+      .eb-reviews__header {
+        margin-bottom: 32px;
+      }
+
+      .eb-reviews__summary {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px 20px;
+        border-radius: 16px;
+      }
+
+      .eb-reviews__source {
+        padding-left: 0;
+        border-left: none;
+        padding-top: 12px;
+        border-top: 1px solid var(--eb-border);
+      }
+
+      .eb-reviews__card {
+        padding: 24px;
+      }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .eb-reviews__card {
+        transition: none;
+      }
+
+      .eb-reviews__card:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SVG Definitions (hidden) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <defs>
+    <!-- Star symbol for reuse -->
+    <symbol id="eb-star" viewBox="0 0 24 24">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </symbol>
+    <!-- Partial star gradient for 4.9 rating -->
+    <linearGradient id="eb-star-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="90%" stop-color="#fbbc04"/>
+      <stop offset="90%" stop-color="#e5e5e5"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<section class="eb-reviews" aria-labelledby="eb-reviews-title">
+  <div class="eb-reviews__container">
+
+    <!-- Header with title and rating summary -->
+    <header class="eb-reviews__header">
+      <h2 class="eb-reviews__title" id="eb-reviews-title">Kundenbewertungen</h2>
+      <div class="eb-reviews__summary" role="img" aria-label="4,9 von 5 Sternen basierend auf mehr als 30 Google Bewertungen">
+        <div class="eb-reviews__rating">
+          <span class="eb-reviews__rating-number">4,9</span>
+          <div class="eb-reviews__rating-stars" aria-hidden="true">
+            <svg><use href="#eb-star"/></svg>
+            <svg><use href="#eb-star"/></svg>
+            <svg><use href="#eb-star"/></svg>
+            <svg><use href="#eb-star"/></svg>
+            <svg class="eb-star--partial"><use href="#eb-star"/></svg>
+          </div>
+        </div>
+        <div class="eb-reviews__source">
+          <!-- Google "G" Logo -->
+          <svg class="eb-reviews__google-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          <span>30+ Bewertungen auf Google</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Testimonial cards grid -->
+    <div class="eb-reviews__grid" role="list">
+
+      <!-- Review 1: Maka Ghlonti -->
+      <article class="eb-reviews__card" role="listitem">
+        <div class="eb-reviews__stars" aria-label="5 von 5 Sternen">
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+        </div>
+        <p class="eb-reviews__text">„Die Zusammenarbeit mit der Firma Eisbedarf war stets sehr professionell. Auf individuelle Wünsche wurde eingegangen und schnell und sauber umgesetzt. Vor allem der Service möchte ich hier hervorheben. Gerne wieder!"</p>
+        <footer class="eb-reviews__author">Maka Ghlonti</footer>
+      </article>
+
+      <!-- Review 2: Maximilian Metz -->
+      <article class="eb-reviews__card" role="listitem">
+        <div class="eb-reviews__stars" aria-label="5 von 5 Sternen">
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+        </div>
+        <p class="eb-reviews__text">„Wir sind mit Eisbedarf sehr zufrieden. Unsere Bestellung wurde schnell geliefert, die Abwicklung war kompetent und der telefonische Support sehr freundlich. Jederzeit wieder gerne, vielen Dank!"</p>
+        <footer class="eb-reviews__author">Maximilian Metz</footer>
+      </article>
+
+      <!-- Review 3: F&B Consulting -->
+      <article class="eb-reviews__card" role="listitem">
+        <div class="eb-reviews__stars" aria-label="5 von 5 Sternen">
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+        </div>
+        <p class="eb-reviews__text">„Absolut schnelle, beratende, zuverlässige und faire Abwicklung. Wir sind froh über so eine Partnerschaft! Uneingeschränkt empfehlenswert!"</p>
+        <footer class="eb-reviews__author">F&amp;B Consulting</footer>
+      </article>
+
+      <!-- Review 4: Alexa von Harder -->
+      <article class="eb-reviews__card" role="listitem">
+        <div class="eb-reviews__stars" aria-label="5 von 5 Sternen">
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+        </div>
+        <p class="eb-reviews__text">„Wir haben unsere Backstube und einen Teil der Theke hier planen und bauen lassen und sind super happy mit dem Ergebnis! Wir haben eine super Beratung bekommen und uns gegenüber wurde sehr viel Geduld bewiesen :)"</p>
+        <footer class="eb-reviews__author">Alexa von Harder</footer>
+      </article>
+
+      <!-- Review 5: Marino D'Angelicchio -->
+      <article class="eb-reviews__card" role="listitem">
+        <div class="eb-reviews__stars" aria-label="5 von 5 Sternen">
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+        </div>
+        <p class="eb-reviews__text">„Ich muss ehrlich sagen das die Einrichtung super bequem sind und wirklich klasse aussehen, genauso wie die Bar, Kühlschränke usw. Alles qualitativ und hochwertig. Alles hat super geklappt, auch die Abwicklung. Gute Arbeit, macht weiter so!"</p>
+        <footer class="eb-reviews__author">Marino D'Angelicchio</footer>
+      </article>
+
+      <!-- Review 6: Janine Sörensen -->
+      <article class="eb-reviews__card" role="listitem">
+        <div class="eb-reviews__stars" aria-label="5 von 5 Sternen">
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+          <svg aria-hidden="true"><use href="#eb-star"/></svg>
+        </div>
+        <p class="eb-reviews__text">„Sehr guter Service und ein gutes Preis-Leistungs-Verhältnis. Die Ware ist top und wenn es mal Probleme gibt, dann wird dieses umgehend gelöst! Nur zu empfehlen!!"</p>
+        <footer class="eb-reviews__author">Janine Sörensen</footer>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
