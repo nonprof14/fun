@@ -5,26 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kundenbewertungen - Eisbedarf</title>
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Open Sans (matching Eisbedarf brand) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* ============================================
        Eisbedarf Reviews Section - Namespaced CSS
        ============================================ */
 
-    /* CSS Custom Properties for easy customization */
+    /* CSS Custom Properties - Eisbedarf Brand Colors */
     :root {
-      --eb-primary-text: #1a1a1a;
-      --eb-secondary-text: #666666;
+      --eb-primary-text: #333333;
+      --eb-secondary-text: #555555;
       --eb-background: #fafafa;
       --eb-card-background: #ffffff;
-      --eb-accent: #4285f4;
-      --eb-star-color: #fbbc04;
+      --eb-accent: #c9a227;
+      --eb-accent-dark: #a8861f;
+      --eb-star-color: #c9a227;
       --eb-border: #e5e5e5;
-      --eb-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --eb-font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --eb-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.08);
       --eb-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
       --eb-radius: 12px;
@@ -261,7 +262,7 @@
     </symbol>
     <!-- Partial star gradient for 4.9 rating -->
     <linearGradient id="eb-star-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="90%" stop-color="#fbbc04"/>
+      <stop offset="90%" stop-color="#c9a227"/>
       <stop offset="90%" stop-color="#e5e5e5"/>
     </linearGradient>
   </defs>
