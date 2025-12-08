@@ -1,0 +1,73 @@
+<style>
+  .eb-topbar {
+    background-color: #333333;
+    color: #ffffff;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .eb-topbar__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: nowrap;
+  }
+  .eb-topbar__text {
+    margin: 0;
+    text-align: center;
+  }
+  .eb-topbar__highlight {
+    font-weight: 600;
+  }
+  .eb-topbar__cta {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .eb-topbar__cta:hover {
+    color: #c9a227;
+  }
+  .eb-topbar__cta::after {
+    content: '→';
+    font-size: 1.1em;
+  }
+  @media (max-width: 768px) {
+    .eb-topbar {
+      font-size: 12px;
+    }
+    .eb-topbar__container {
+      padding: 10px 16px;
+      gap: 16px;
+    }
+  }
+  @media (max-width: 480px) {
+    .eb-topbar {
+      font-size: 11px;
+    }
+    .eb-topbar__container {
+      padding: 10px 12px;
+      gap: 12px;
+    }
+  }
+</style>
+
+<div class="eb-topbar">
+  <div class="eb-topbar__container">
+    <p class="eb-topbar__text">
+      <span class="eb-topbar__highlight">Weihnachtsaktion bis 31.01:</span>
+      bei Eisdielen-Konzept gratis Siebträgermaschine (2 Gr.)
+    </p>
+    <a href="https://eisbedarf.shop/kontakt/" class="eb-topbar__cta">
+      Jetzt Anfragen
+    </a>
+  </div>
+</div>
