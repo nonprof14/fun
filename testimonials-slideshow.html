@@ -1,0 +1,806 @@
+<style>
+  /* ============================================
+     EISBEDARF TESTIMONIALS SLIDESHOW
+     WordPress-embeddable component
+     ============================================ */
+
+  .eb-testimonials {
+    background-color: #f9f6f2;
+    padding: 60px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .eb-testimonials *,
+  .eb-testimonials *::before,
+  .eb-testimonials *::after {
+    box-sizing: border-box;
+  }
+
+  .eb-testimonials__header {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #333333;
+    margin: 0 0 50px 0;
+    padding: 0;
+  }
+
+  .eb-testimonials__slider {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .eb-testimonials__track-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .eb-testimonials__track {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .eb-testimonials__slide {
+    flex: 0 0 calc(33.333% - 17px);
+    margin-right: 25px;
+    min-width: 0;
+  }
+
+  .eb-testimonials__slide:last-child {
+    margin-right: 0;
+  }
+
+  .eb-testimonials__card {
+    background-color: #f0ebe4;
+    padding: 30px;
+    border-radius: 4px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eb-testimonials__card-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #333333;
+    margin: 0 0 15px 0;
+  }
+
+  .eb-testimonials__stars {
+    color: #c9a227;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .eb-testimonials__text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444444;
+    margin: 0 0 25px 0;
+    flex-grow: 1;
+  }
+
+  .eb-testimonials__author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .eb-testimonials__avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #c9a227;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .eb-testimonials__avatar svg {
+    width: 26px;
+    height: 26px;
+    fill: #ffffff;
+  }
+
+  .eb-testimonials__author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .eb-testimonials__name {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #333333;
+    letter-spacing: 0.5px;
+  }
+
+  .eb-testimonials__label {
+    font-size: 12px;
+    color: #777777;
+  }
+
+  /* Navigation Arrows */
+  .eb-testimonials__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background-color: #c9a227;
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    z-index: 10;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .eb-testimonials__nav:hover {
+    background-color: #b89223;
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .eb-testimonials__nav:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .eb-testimonials__nav--prev {
+    left: 0;
+  }
+
+  .eb-testimonials__nav--next {
+    right: 0;
+  }
+
+  .eb-testimonials__nav svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+  }
+
+  /* Dot Indicators */
+  .eb-testimonials__dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .eb-testimonials__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #d4c4a8;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .eb-testimonials__dot:hover {
+    background-color: #c9a227;
+    transform: scale(1.1);
+  }
+
+  .eb-testimonials__dot--active {
+    background-color: #c9a227;
+  }
+
+  /* ============================================
+     TABLET STYLES (768px - 1199px)
+     ============================================ */
+  @media (max-width: 1199px) {
+    .eb-testimonials {
+      padding: 50px 30px;
+    }
+
+    .eb-testimonials__header {
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    .eb-testimonials__slider {
+      padding: 0 50px;
+    }
+
+    .eb-testimonials__slide {
+      flex: 0 0 calc(50% - 10px);
+      margin-right: 20px;
+    }
+
+    .eb-testimonials__card {
+      padding: 25px;
+    }
+
+    .eb-testimonials__nav {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+
+    .eb-testimonials__nav svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  /* ============================================
+     MOBILE STYLES (below 768px)
+     ============================================ */
+  @media (max-width: 767px) {
+    .eb-testimonials {
+      padding: 40px 20px;
+    }
+
+    .eb-testimonials__header {
+      font-size: 24px;
+      letter-spacing: 2px;
+      margin-bottom: 35px;
+    }
+
+    .eb-testimonials__slider {
+      padding: 0 45px;
+    }
+
+    .eb-testimonials__slide {
+      flex: 0 0 100%;
+      margin-right: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .eb-testimonials__card {
+      padding: 20px;
+      max-width: 350px;
+      width: 100%;
+    }
+
+    .eb-testimonials__card-title {
+      font-size: 12px;
+    }
+
+    .eb-testimonials__text {
+      font-size: 13px;
+    }
+
+    .eb-testimonials__nav {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+    }
+
+    .eb-testimonials__nav svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .eb-testimonials__dots {
+      margin-top: 30px;
+      gap: 10px;
+    }
+
+    .eb-testimonials__dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  /* ============================================
+     SMALL MOBILE STYLES (below 480px)
+     ============================================ */
+  @media (max-width: 479px) {
+    .eb-testimonials {
+      padding: 30px 15px;
+    }
+
+    .eb-testimonials__header {
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin-bottom: 30px;
+    }
+
+    .eb-testimonials__slider {
+      padding: 0 40px;
+    }
+
+    .eb-testimonials__card-title {
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .eb-testimonials__stars {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .eb-testimonials__text {
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .eb-testimonials__author {
+      gap: 12px;
+      padding-top: 15px;
+    }
+
+    .eb-testimonials__avatar {
+      width: 40px;
+      height: 40px;
+    }
+
+    .eb-testimonials__avatar svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .eb-testimonials__name {
+      font-size: 12px;
+    }
+
+    .eb-testimonials__label {
+      font-size: 11px;
+    }
+
+    .eb-testimonials__dots {
+      gap: 8px;
+    }
+
+    .eb-testimonials__dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+</style>
+
+<div class="eb-testimonials">
+  <h2 class="eb-testimonials__header">Was Unsere Kunden Sagen</h2>
+
+  <div class="eb-testimonials__slider">
+    <div class="eb-testimonials__track-wrapper">
+      <div class="eb-testimonials__track" id="ebTestimonialsTrack">
+
+        <!-- Testimonial 1 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Professionell & Zuverlässig</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Die Zusammenarbeit mit der Firma Eisbedarf war stets sehr Professionell. Auf Individuelle Wünsche wurde eingegangen und schnell und sauber umgesetzt. Vor allem der Service möchte ich hier hervorheben. Gerne wieder!"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Maka Ghlonti</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Schnell & Kompetent</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Wir sind mit Eisbedarf sehr zufrieden. Unsere Bestellung wurde schnell geliefert, die Abwicklung war kompetent und der telefonische Support sehr freundlich. Jederzeit wieder gerne, vielen Dank!"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Maximilian Metz</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Uneingeschränkt Empfehlenswert</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Absolut schnelle, beratende, zuverlässige und faire Abwicklung. Wir sind froh über so eine Partnerschaft! Uneingeschränkt empfehlenswert!"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">F&B Consulting</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Mehr als Zufrieden</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Wir haben eine Eisdiele in Zusammenarbeit mit Gastronomie-Eisbedarf eröffnet und sind mehr als zufrieden. Wenn ihr eine gescheite Einrichtung braucht, seid ihr hier richtig!"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Julia Weinzierl</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Qualitativ & Hochwertig</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Ich muss ehrlich sagen das die Einrichtung super bequem sind und wirklich klasse aussehen, genauso wie die Bar, Kühlschränke usw. Alles qualitativ und hochwertig. Gute Arbeit, macht weiter so!"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Marino D'Angelicchio</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 6 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Super Happy mit dem Ergebnis</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Wir haben unsere Backstube und einen Teil der Theke hier planen und bauen lassen und sind super happy mit dem Ergebnis! Wir haben eine super Beratung bekommen und sehr viel Geduld bewiesen :)"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Alexa von Harder</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 7 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Top Preis-Leistung</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Sehr guter Service und ein gutes Preis-Leistungs-Verhältnis. Die Ware ist top und wenn es mal Probleme gibt, dann wird dieses umgehend gelöst! Nur zu empfehlen!!"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Janine Sörensen</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 8 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Ein Traum für Gastronomie</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Super Firma, sehr gute Qualität. Der Einbau ist fehlerfrei und Termine werden eingehalten. Einfach ein Traum für jeden der in der Gastronomie auf Qualität achtet."</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Selo Vatansever</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 9 -->
+        <div class="eb-testimonials__slide">
+          <div class="eb-testimonials__card">
+            <h3 class="eb-testimonials__card-title">Seit Jahren Zufrieden</h3>
+            <div class="eb-testimonials__stars">★★★★★</div>
+            <p class="eb-testimonials__text">"Wir arbeiten sehr lange mit der Firma Eisbedarf und Gastronomie. Sind seit vielen Jahren zufrieden. Termin, Qualität, Preis – alles top!"</p>
+            <div class="eb-testimonials__author">
+              <div class="eb-testimonials__avatar">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div class="eb-testimonials__author-info">
+                <span class="eb-testimonials__name">Yasar Atici</span>
+                <span class="eb-testimonials__label">Google Bewertung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="eb-testimonials__nav eb-testimonials__nav--prev" id="ebTestimonialsPrev" aria-label="Vorherige Bewertungen">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+    </button>
+    <button class="eb-testimonials__nav eb-testimonials__nav--next" id="ebTestimonialsNext" aria-label="Nächste Bewertungen">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="eb-testimonials__dots" id="ebTestimonialsDots">
+    <!-- Dots generated by JavaScript -->
+  </div>
+</div>
+
+<script>
+(function() {
+  // Testimonials Slideshow - IIFE to avoid global scope pollution
+
+  const track = document.getElementById('ebTestimonialsTrack');
+  const slides = track.querySelectorAll('.eb-testimonials__slide');
+  const prevBtn = document.getElementById('ebTestimonialsPrev');
+  const nextBtn = document.getElementById('ebTestimonialsNext');
+  const dotsContainer = document.getElementById('ebTestimonialsDots');
+  const slider = document.querySelector('.eb-testimonials__slider');
+
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let slidesPerView = 3;
+  let autoPlayInterval;
+  let isHovered = false;
+
+  // Determine slides per view based on viewport width
+  function getSlidesPerView() {
+    const width = window.innerWidth;
+    if (width >= 1200) return 3;
+    if (width >= 768) return 2;
+    return 1;
+  }
+
+  // Calculate max index based on slides per view
+  function getMaxIndex() {
+    return Math.max(0, totalSlides - slidesPerView);
+  }
+
+  // Update slide widths based on viewport
+  function updateSlideWidths() {
+    const width = window.innerWidth;
+    let slideWidth, gap;
+
+    if (width >= 1200) {
+      gap = 25;
+      slideWidth = `calc(33.333% - ${(gap * 2) / 3}px)`;
+    } else if (width >= 768) {
+      gap = 20;
+      slideWidth = `calc(50% - ${gap / 2}px)`;
+    } else {
+      gap = 0;
+      slideWidth = '100%';
+    }
+
+    slides.forEach((slide, index) => {
+      slide.style.flex = `0 0 ${slideWidth}`;
+      slide.style.marginRight = (index < totalSlides - 1 && width >= 768) ? `${gap}px` : '0';
+    });
+  }
+
+  // Generate dot indicators
+  function generateDots() {
+    dotsContainer.innerHTML = '';
+    const maxIndex = getMaxIndex();
+    const numDots = maxIndex + 1;
+
+    for (let i = 0; i < numDots; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'eb-testimonials__dot' + (i === currentIndex ? ' eb-testimonials__dot--active' : '');
+      dot.setAttribute('aria-label', `Gehe zu Seite ${i + 1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  // Update active dot
+  function updateDots() {
+    const dots = dotsContainer.querySelectorAll('.eb-testimonials__dot');
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('eb-testimonials__dot--active', index === currentIndex);
+    });
+  }
+
+  // Go to specific slide
+  function goToSlide(index) {
+    const maxIndex = getMaxIndex();
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+
+    const width = window.innerWidth;
+    let gap, slideWidthPercent;
+
+    if (width >= 1200) {
+      gap = 25;
+      slideWidthPercent = 33.333;
+    } else if (width >= 768) {
+      gap = 20;
+      slideWidthPercent = 50;
+    } else {
+      gap = 0;
+      slideWidthPercent = 100;
+    }
+
+    const offset = currentIndex * (slideWidthPercent + (gap / track.parentElement.offsetWidth * 100));
+    track.style.transform = `translateX(-${offset}%)`;
+
+    updateDots();
+  }
+
+  // Next slide
+  function nextSlide() {
+    const maxIndex = getMaxIndex();
+    if (currentIndex >= maxIndex) {
+      goToSlide(0); // Loop back to start
+    } else {
+      goToSlide(currentIndex + 1);
+    }
+  }
+
+  // Previous slide
+  function prevSlide() {
+    const maxIndex = getMaxIndex();
+    if (currentIndex <= 0) {
+      goToSlide(maxIndex); // Loop to end
+    } else {
+      goToSlide(currentIndex - 1);
+    }
+  }
+
+  // Start auto-play
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayInterval = setInterval(() => {
+      if (!isHovered) {
+        nextSlide();
+      }
+    }, 5000);
+  }
+
+  // Stop auto-play
+  function stopAutoPlay() {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+    }
+  }
+
+  // Handle resize
+  function handleResize() {
+    const newSlidesPerView = getSlidesPerView();
+    if (newSlidesPerView !== slidesPerView) {
+      slidesPerView = newSlidesPerView;
+      // Ensure current index is valid for new slides per view
+      const maxIndex = getMaxIndex();
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+      }
+      generateDots();
+    }
+    updateSlideWidths();
+    goToSlide(currentIndex);
+  }
+
+  // Initialize
+  function init() {
+    slidesPerView = getSlidesPerView();
+    updateSlideWidths();
+    generateDots();
+    goToSlide(0);
+    startAutoPlay();
+
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      startAutoPlay(); // Reset timer on manual navigation
+    });
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      startAutoPlay(); // Reset timer on manual navigation
+    });
+
+    // Pause on hover (desktop)
+    slider.addEventListener('mouseenter', () => {
+      isHovered = true;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isHovered = false;
+    });
+
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(handleResize, 100);
+    });
+
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          nextSlide(); // Swipe left = next
+        } else {
+          prevSlide(); // Swipe right = previous
+        }
+        startAutoPlay(); // Reset timer
+      }
+    }
+  }
+
+  // Run initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
