@@ -63,10 +63,6 @@
     line-height: 1.8;
   }
 
-  .eb-contact__line + .eb-contact__line {
-    margin-top: 5px;
-  }
-
   .eb-contact__label {
     color: #a0b0b5;
   }
@@ -84,7 +80,7 @@
 
   .eb-contact__separator {
     color: #a0b0b5;
-    margin: 0 8px;
+    margin: 0 10px;
   }
 
   .eb-contact__name {
@@ -151,10 +147,6 @@
       font-size: 15px;
       line-height: 1.7;
     }
-
-    .eb-contact__line + .eb-contact__line {
-      margin-top: 8px;
-    }
   }
 
   /* ============================================
@@ -182,29 +174,14 @@
     .eb-contact__line {
       font-size: 14px;
       line-height: 1.6;
-    }
-
-    .eb-contact__separator {
-      display: block;
-      visibility: hidden;
-      height: 0;
-      margin: 0;
-    }
-
-    .eb-contact__separator::before {
-      content: '';
-    }
-
-    /* Stack phone number and name on small screens */
-    .eb-contact__line {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
+      gap: 4px;
     }
 
-    .eb-contact__line + .eb-contact__line {
-      margin-top: 15px;
+    .eb-contact__separator {
+      display: none;
     }
   }
 </style>
@@ -220,9 +197,6 @@
     <div class="eb-contact__info">
       <p class="eb-contact__line">
         <span><span class="eb-contact__label">Mobil:</span> <a href="tel:+4916044930067" class="eb-contact__link">+49 (0) 160 44 93 067</a></span><span class="eb-contact__separator">|</span><span class="eb-contact__name">Vincenzo Penna</span>
-      </p>
-      <p class="eb-contact__line">
-        <span><span class="eb-contact__label">Mobil:</span> <a href="tel:+4917175101377" class="eb-contact__link">+49 (0) 171 75 10 137</a></span><span class="eb-contact__separator">|</span><span class="eb-contact__name">Francesco Landolfo</span>
       </p>
     </div>
 
