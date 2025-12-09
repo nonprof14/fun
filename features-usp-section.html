@@ -1,0 +1,302 @@
+<style>
+  /* ============================================
+     EISBEDARF FEATURES/USP SECTION
+     WordPress-embeddable component
+     ============================================ */
+
+  .eb-features {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .eb-features *,
+  .eb-features *::before,
+  .eb-features *::after {
+    box-sizing: border-box;
+  }
+
+  .eb-features__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .eb-features__intro {
+    font-size: 17px;
+    font-style: italic;
+    color: #555555;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+  }
+
+  .eb-features__grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .eb-features__item {
+    flex: 1;
+    max-width: 280px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .eb-features__icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .eb-features__icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: #c9a227;
+    stroke-width: 1.5;
+    fill: none;
+  }
+
+  .eb-features__text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .eb-features__cta {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .eb-features__button {
+    display: inline-block;
+    background-color: #c9a227;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .eb-features__button:hover {
+    background-color: #b8922a;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  /* ============================================
+     TABLET STYLES (768px - 1199px)
+     ============================================ */
+  @media (max-width: 1199px) {
+    .eb-features {
+      padding: 50px 30px;
+    }
+
+    .eb-features__intro {
+      font-size: 16px;
+      max-width: 700px;
+      margin-bottom: 45px;
+    }
+
+    .eb-features__grid {
+      gap: 30px;
+    }
+
+    .eb-features__icon {
+      width: 45px;
+      height: 45px;
+      margin-bottom: 18px;
+    }
+
+    .eb-features__text {
+      font-size: 13px;
+      letter-spacing: 1.5px;
+    }
+
+    .eb-features__cta {
+      margin-top: 45px;
+    }
+  }
+
+  /* ============================================
+     MOBILE STYLES (below 768px)
+     ============================================ */
+  @media (max-width: 767px) {
+    .eb-features {
+      padding: 40px 20px;
+    }
+
+    .eb-features__intro {
+      font-size: 15px;
+      max-width: 100%;
+      margin-bottom: 40px;
+      padding: 0;
+    }
+
+    .eb-features__grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 35px;
+    }
+
+    .eb-features__item {
+      max-width: 300px;
+    }
+
+    .eb-features__icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 15px;
+    }
+
+    .eb-features__text {
+      font-size: 13px;
+    }
+
+    .eb-features__cta {
+      margin-top: 40px;
+    }
+
+    .eb-features__button {
+      padding: 15px 30px;
+    }
+  }
+
+  /* ============================================
+     SMALL MOBILE STYLES (below 480px)
+     ============================================ */
+  @media (max-width: 479px) {
+    .eb-features {
+      padding: 30px 15px;
+    }
+
+    .eb-features__intro {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 35px;
+    }
+
+    .eb-features__grid {
+      gap: 30px;
+    }
+
+    .eb-features__icon {
+      width: 38px;
+      height: 38px;
+    }
+
+    .eb-features__text {
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .eb-features__cta {
+      margin-top: 35px;
+    }
+
+    .eb-features__button {
+      font-size: 11px;
+      padding: 14px 25px;
+      letter-spacing: 1.5px;
+    }
+  }
+</style>
+
+<section class="eb-features">
+  <div class="eb-features__container">
+
+    <p class="eb-features__intro">
+      Tauchen Sie ein in die Welt zeitloser Eleganz und exquisiter Handwerkskunst. Unsere exklusiven italienischen Design-Einrichtungen aller Art vereinen höchste Qualität mit innovativem Stil – ob moderne Eisdielen/Gelateria, gemütliche Café Bar oder stilvolles Restaurant, Feinkost aller Art und vieles mehr….
+    </p>
+
+    <div class="eb-features__grid">
+
+      <!-- Feature 1: Tools / Craftsmanship -->
+      <div class="eb-features__item">
+        <div class="eb-features__icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <!-- Wrench -->
+            <path d="M8 12C8 8.5 10.5 5.5 14 5C14 5 13 8 14 10C15 12 18 12 18 12C18 12 18 15 16 16C14 17 11 17 11 17L6 42C6 43.5 7.5 45 9 44L14 19" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Screwdriver -->
+            <path d="M42 12L38 8L32 14L30 18L18 30L20 32L32 20L36 18L42 12Z" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 32L8 44C7 45 8 47 10 46L22 34" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Handle detail -->
+            <path d="M38 8L42 5" stroke-linecap="round"/>
+            <path d="M40 10L44 7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="eb-features__text">Edles & Handgefertigtes<br>Design</p>
+      </div>
+
+      <!-- Feature 2: Star / Quality -->
+      <div class="eb-features__item">
+        <div class="eb-features__icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main star outline -->
+            <path d="M25 5L29.5 18.5H44L32 27L36.5 41L25 32L13.5 41L18 27L6 18.5H20.5L25 5Z" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Sparkle accent top right -->
+            <path d="M40 6L40 12" stroke-linecap="round"/>
+            <path d="M37 9L43 9" stroke-linecap="round"/>
+            <!-- Small sparkle -->
+            <circle cx="44" cy="4" r="1" fill="#c9a227" stroke="none"/>
+          </svg>
+        </div>
+        <p class="eb-features__text">Hochwertige Materialien &<br>Perfektion bis ins Detail</p>
+      </div>
+
+      <!-- Feature 3: Handshake / Consultation -->
+      <div class="eb-features__item">
+        <div class="eb-features__icon">
+          <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left hand -->
+            <path d="M5 28L12 28L18 22L24 22" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 32L14 32L20 38L24 38" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Right hand -->
+            <path d="M45 28L38 28L32 22L26 22" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M45 32L36 32L30 38L26 38" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Handshake grip -->
+            <path d="M24 22C24 22 26 24 25 26C24 28 26 30 26 30" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 30L26 32L28 30" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Rays above -->
+            <path d="M25 10L25 15" stroke-linecap="round"/>
+            <path d="M18 12L20 16" stroke-linecap="round"/>
+            <path d="M32 12L30 16" stroke-linecap="round"/>
+            <!-- Small dots -->
+            <circle cx="15" cy="10" r="1" fill="#c9a227" stroke="none"/>
+            <circle cx="35" cy="10" r="1" fill="#c9a227" stroke="none"/>
+          </svg>
+        </div>
+        <p class="eb-features__text">Individuelle Beratung &<br>Maßgeschneiderte Lösungen</p>
+      </div>
+
+    </div>
+
+    <div class="eb-features__cta">
+      <a href="https://eisbedarf.shop/kontakt/" class="eb-features__button">
+        Verwandeln Sie Ihre Räume in Kunstwerke!
+      </a>
+    </div>
+
+  </div>
+</section>
