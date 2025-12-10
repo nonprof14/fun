@@ -32,15 +32,10 @@
     flex-direction: column;
   }
 
-  .eb-gallery__images {
-    display: flex;
-    flex-direction: column;
-  }
-
   .eb-gallery__image-wrapper {
     width: 100%;
-    height: 150px;
     overflow: hidden;
+    flex-grow: 1;
   }
 
   .eb-gallery__image {
@@ -148,10 +143,6 @@
       max-width: 450px;
     }
 
-    .eb-gallery__image-wrapper {
-      height: 140px;
-    }
-
     .eb-gallery__caption {
       height: 80px;
     }
@@ -189,10 +180,6 @@
       width: 100%;
     }
 
-    .eb-gallery__image-wrapper {
-      height: 160px;
-    }
-
     .eb-gallery__caption {
       height: 70px;
       padding: 0 15px;
@@ -226,10 +213,6 @@
   @media (max-width: 479px) {
     .eb-gallery {
       padding: 30px 15px;
-    }
-
-    .eb-gallery__image-wrapper {
-      height: 140px;
     }
 
     .eb-gallery__caption {
@@ -266,23 +249,9 @@
 
     <!-- Column 1 (Always visible) -->
     <div class="eb-gallery__column">
-      <div class="eb-gallery__images">
-        <!-- IMAGE 1 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+1" alt="Café Einrichtung 1">
-        </div>
-        <!-- IMAGE 2 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+2" alt="Café Einrichtung 2">
-        </div>
-        <!-- IMAGE 3 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+3" alt="Café Einrichtung 3">
-        </div>
-        <!-- IMAGE 4 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+4" alt="Café Einrichtung 4">
-        </div>
+      <div class="eb-gallery__image-wrapper">
+        <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <img class="eb-gallery__image" src="https://via.placeholder.com/400x500/f5f5f5/999999?text=Column+1+Image" alt="Café und Gelateria Einrichtung">
       </div>
       <div class="eb-gallery__caption">
         <p class="eb-gallery__caption-text">Einrichtung für Cafés, Gelateria, Bars, Restaurants</p>
@@ -291,23 +260,9 @@
 
     <!-- Column 2 (Hidden on mobile) -->
     <div class="eb-gallery__column">
-      <div class="eb-gallery__images">
-        <!-- IMAGE 5 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+5" alt="Bistro Einrichtung 1">
-        </div>
-        <!-- IMAGE 6 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+6" alt="Bistro Einrichtung 2">
-        </div>
-        <!-- IMAGE 7 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+7" alt="Bistro Einrichtung 3">
-        </div>
-        <!-- IMAGE 8 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+8" alt="Bistro Einrichtung 4">
-        </div>
+      <div class="eb-gallery__image-wrapper">
+        <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <img class="eb-gallery__image" src="https://via.placeholder.com/400x500/e8e8e8/999999?text=Column+2+Image" alt="Bistro und Eisdiele Einrichtung">
       </div>
       <div class="eb-gallery__caption">
         <p class="eb-gallery__caption-text">Einrichtung für Cafés, Bistros, Gelateria, Eisdielen oder Restaurants uvm.</p>
@@ -316,23 +271,9 @@
 
     <!-- Column 3 (Hidden on tablet & mobile) -->
     <div class="eb-gallery__column">
-      <div class="eb-gallery__images">
-        <!-- IMAGE 9 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+9" alt="Patisserie Einrichtung 1">
-        </div>
-        <!-- IMAGE 10 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+10" alt="Patisserie Einrichtung 2">
-        </div>
-        <!-- IMAGE 11 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+11" alt="Patisserie Einrichtung 3">
-        </div>
-        <!-- IMAGE 12 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-        <div class="eb-gallery__image-wrapper">
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+12" alt="Patisserie Einrichtung 4">
-        </div>
+      <div class="eb-gallery__image-wrapper">
+        <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <img class="eb-gallery__image" src="https://via.placeholder.com/400x500/f5f5f5/999999?text=Column+3+Image" alt="Patisserie und Bäckerei Einrichtung">
       </div>
       <div class="eb-gallery__caption">
         <p class="eb-gallery__caption-text">Einrichtung für Patisserien, Eisdielen, Bäckereien und gehobene Cafés</p>
