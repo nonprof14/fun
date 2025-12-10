@@ -17,17 +17,6 @@
     box-sizing: border-box;
   }
 
-  .eb-gallery__header {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    font-size: 40px;
-    font-weight: 300;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    color: #222222;
-    text-align: center;
-    margin: 0 0 40px 0;
-  }
-
   .eb-gallery__grid {
     display: flex;
     justify-content: center;
@@ -46,20 +35,12 @@
   .eb-gallery__images {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    flex-grow: 1;
   }
 
   .eb-gallery__image-wrapper {
-    position: relative;
+    width: 100%;
+    height: 150px;
     overflow: hidden;
-    flex: 1;
-    min-height: 180px;
-  }
-
-  .eb-gallery__image-wrapper--large {
-    flex: 1.5;
-    min-height: 250px;
   }
 
   .eb-gallery__image {
@@ -67,38 +48,43 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
 
   .eb-gallery__caption {
-    background-color: rgba(214, 69, 69, 0.95);
-    padding: 18px 20px;
+    background-color: #d64545;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .eb-gallery__caption-text {
     color: #ffffff;
     font-size: 14px;
     font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
+    line-height: 1.4;
+    text-align: left;
+    margin: 0;
   }
 
   .eb-gallery__cta {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
     margin-top: 50px;
     flex-wrap: wrap;
   }
 
   .eb-gallery__button {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 35px;
     cursor: pointer;
     transition: all 0.3s ease;
   }
@@ -106,7 +92,9 @@
   .eb-gallery__button--primary {
     background-color: #d64545;
     color: #ffffff;
+    padding: 16px 40px;
     border: none;
+    border-radius: 0;
   }
 
   .eb-gallery__button--primary:hover {
@@ -118,19 +106,8 @@
   .eb-gallery__button--secondary {
     background-color: transparent;
     color: #222222;
+    padding: 16px 10px;
     border: none;
-    position: relative;
-  }
-
-  .eb-gallery__button--secondary::after {
-    content: '';
-    position: absolute;
-    bottom: 12px;
-    left: 35px;
-    right: 35px;
-    height: 1px;
-    background-color: #222222;
-    transition: all 0.3s ease;
   }
 
   .eb-gallery__button--secondary:hover {
@@ -138,8 +115,17 @@
     text-decoration: none;
   }
 
-  .eb-gallery__button--secondary:hover::after {
+  .eb-gallery__button--secondary:hover .eb-gallery__button-underline {
     background-color: #d64545;
+  }
+
+  .eb-gallery__button-underline {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #222222;
+    margin-top: 4px;
+    transition: background-color 0.3s ease;
   }
 
   /* ============================================
@@ -148,12 +134,6 @@
   @media (max-width: 1199px) {
     .eb-gallery {
       padding: 50px 30px;
-    }
-
-    .eb-gallery__header {
-      font-size: 34px;
-      letter-spacing: 6px;
-      margin-bottom: 35px;
     }
 
     .eb-gallery__grid {
@@ -168,13 +148,21 @@
       max-width: 450px;
     }
 
+    .eb-gallery__image-wrapper {
+      height: 140px;
+    }
+
     .eb-gallery__caption {
+      height: 80px;
+    }
+
+    .eb-gallery__caption-text {
       font-size: 13px;
-      padding: 15px 18px;
     }
 
     .eb-gallery__cta {
       margin-top: 40px;
+      gap: 30px;
     }
   }
 
@@ -184,12 +172,6 @@
   @media (max-width: 767px) {
     .eb-gallery {
       padding: 40px 20px;
-    }
-
-    .eb-gallery__header {
-      font-size: 28px;
-      letter-spacing: 4px;
-      margin-bottom: 30px;
     }
 
     .eb-gallery__grid {
@@ -208,11 +190,16 @@
     }
 
     .eb-gallery__image-wrapper {
-      min-height: 200px;
+      height: 160px;
     }
 
-    .eb-gallery__image-wrapper--large {
-      min-height: 280px;
+    .eb-gallery__caption {
+      height: 70px;
+      padding: 0 15px;
+    }
+
+    .eb-gallery__caption-text {
+      font-size: 13px;
     }
 
     .eb-gallery__cta {
@@ -221,17 +208,15 @@
       margin-top: 35px;
     }
 
-    .eb-gallery__button {
+    .eb-gallery__button--primary {
       width: 100%;
       max-width: 320px;
       text-align: center;
+      justify-content: center;
     }
 
-    .eb-gallery__button--secondary::after {
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%);
-      width: calc(100% - 70px);
+    .eb-gallery__button--secondary {
+      width: auto;
     }
   }
 
@@ -243,28 +228,18 @@
       padding: 30px 15px;
     }
 
-    .eb-gallery__header {
-      font-size: 24px;
-      letter-spacing: 3px;
-      margin-bottom: 25px;
-    }
-
-    .eb-gallery__images {
-      gap: 8px;
-    }
-
     .eb-gallery__image-wrapper {
-      min-height: 160px;
-    }
-
-    .eb-gallery__image-wrapper--large {
-      min-height: 220px;
+      height: 140px;
     }
 
     .eb-gallery__caption {
+      height: 70px;
+      padding: 0 15px;
+    }
+
+    .eb-gallery__caption-text {
       font-size: 13px;
-      padding: 14px 15px;
-      line-height: 1.4;
+      line-height: 1.3;
     }
 
     .eb-gallery__cta {
@@ -272,72 +247,95 @@
       gap: 12px;
     }
 
-    .eb-gallery__button {
+    .eb-gallery__button--primary {
       font-size: 12px;
-      padding: 14px 25px;
+      padding: 14px 30px;
       letter-spacing: 1.5px;
     }
 
-    .eb-gallery__button--secondary::after {
-      bottom: 10px;
-      width: calc(100% - 50px);
+    .eb-gallery__button--secondary {
+      font-size: 12px;
+      letter-spacing: 1.5px;
     }
   }
 </style>
 
 <section class="eb-gallery">
-  <h2 class="eb-gallery__header">Galerie</h2>
 
   <div class="eb-gallery__grid">
 
     <!-- Column 1 (Always visible) -->
     <div class="eb-gallery__column">
       <div class="eb-gallery__images">
-        <div class="eb-gallery__image-wrapper eb-gallery__image-wrapper--large">
-          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x300/f5f5f5/222222?text=Image+1" alt="Café Einrichtung">
-        </div>
+        <!-- IMAGE 1 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
         <div class="eb-gallery__image-wrapper">
-          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x250/f5f5f5/222222?text=Image+2" alt="Gelateria Einrichtung">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+1" alt="Café Einrichtung 1">
+        </div>
+        <!-- IMAGE 2 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+2" alt="Café Einrichtung 2">
+        </div>
+        <!-- IMAGE 3 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+3" alt="Café Einrichtung 3">
+        </div>
+        <!-- IMAGE 4 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+4" alt="Café Einrichtung 4">
         </div>
       </div>
       <div class="eb-gallery__caption">
-        Einrichtung für Cafés, Gelateria, Bars, Restaurants
+        <p class="eb-gallery__caption-text">Einrichtung für Cafés, Gelateria, Bars, Restaurants</p>
       </div>
     </div>
 
     <!-- Column 2 (Hidden on mobile) -->
     <div class="eb-gallery__column">
       <div class="eb-gallery__images">
+        <!-- IMAGE 5 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
         <div class="eb-gallery__image-wrapper">
-          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x250/f5f5f5/222222?text=Image+3" alt="Bistro Einrichtung">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+5" alt="Bistro Einrichtung 1">
         </div>
-        <div class="eb-gallery__image-wrapper eb-gallery__image-wrapper--large">
-          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x300/f5f5f5/222222?text=Image+4" alt="Eisdiele Einrichtung">
+        <!-- IMAGE 6 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+6" alt="Bistro Einrichtung 2">
+        </div>
+        <!-- IMAGE 7 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+7" alt="Bistro Einrichtung 3">
+        </div>
+        <!-- IMAGE 8 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+8" alt="Bistro Einrichtung 4">
         </div>
       </div>
       <div class="eb-gallery__caption">
-        Einrichtung für Cafés, Bistros, Gelateria, Eisdielen oder Restaurants uvm.
+        <p class="eb-gallery__caption-text">Einrichtung für Cafés, Bistros, Gelateria, Eisdielen oder Restaurants uvm.</p>
       </div>
     </div>
 
     <!-- Column 3 (Hidden on tablet & mobile) -->
     <div class="eb-gallery__column">
       <div class="eb-gallery__images">
-        <div class="eb-gallery__image-wrapper eb-gallery__image-wrapper--large">
-          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x300/f5f5f5/222222?text=Image+5" alt="Patisserie Einrichtung">
-        </div>
+        <!-- IMAGE 9 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
         <div class="eb-gallery__image-wrapper">
-          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
-          <img class="eb-gallery__image" src="https://via.placeholder.com/400x250/f5f5f5/222222?text=Image+6" alt="Bäckerei Einrichtung">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+9" alt="Patisserie Einrichtung 1">
+        </div>
+        <!-- IMAGE 10 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+10" alt="Patisserie Einrichtung 2">
+        </div>
+        <!-- IMAGE 11 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/f5f5f5/999999?text=Image+11" alt="Patisserie Einrichtung 3">
+        </div>
+        <!-- IMAGE 12 - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+        <div class="eb-gallery__image-wrapper">
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x150/e8e8e8/999999?text=Image+12" alt="Patisserie Einrichtung 4">
         </div>
       </div>
       <div class="eb-gallery__caption">
-        Einrichtung für Patisserien, Eisdielen, Bäckereien und gehobene Cafés
+        <p class="eb-gallery__caption-text">Einrichtung für Patisserien, Eisdielen, Bäckereien und gehobene Cafés</p>
       </div>
     </div>
 
@@ -349,7 +347,8 @@
     </a>
     <!-- REPLACE href WITH YOUR PDF URL FROM WORDPRESS MEDIA LIBRARY -->
     <a href="PDF_URL_PLACEHOLDER" class="eb-gallery__button eb-gallery__button--secondary" target="_blank">
-      Design-Katalog Herunterladen
+      <span>Design-Katalog Herunterladen</span>
+      <span class="eb-gallery__button-underline"></span>
     </a>
   </div>
 
