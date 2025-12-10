@@ -1,0 +1,1028 @@
+<style>
+  /* ============================================
+     EISBEDARF PORTFOLIO/GALLERY SECTION
+     WordPress-embeddable component
+     ============================================ */
+
+  .eb-portfolio {
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    box-sizing: border-box;
+    line-height: 1.6;
+    color: #222222;
+  }
+
+  .eb-portfolio *,
+  .eb-portfolio *::before,
+  .eb-portfolio *::after {
+    box-sizing: border-box;
+  }
+
+  .eb-portfolio__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ============================================
+     TOP BAR - Phone CTA
+     ============================================ */
+  .eb-portfolio__topbar {
+    background-color: #2068B2;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .eb-portfolio__topbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+  }
+
+  .eb-portfolio__topbar a:hover {
+    opacity: 0.85;
+    text-decoration: underline;
+  }
+
+  /* ============================================
+     HERO SECTION
+     ============================================ */
+  .eb-portfolio__hero {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #ffffff;
+  }
+
+  .eb-portfolio__hero-title {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #222222;
+    margin: 0 0 15px 0;
+  }
+
+  .eb-portfolio__hero-subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: #555555;
+    margin: 0;
+    font-style: italic;
+  }
+
+  /* ============================================
+     GALLERY SLIDER
+     ============================================ */
+  .eb-portfolio__gallery {
+    padding: 40px 20px 60px;
+    background-color: #f5f5f5;
+  }
+
+  .eb-portfolio__gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+  }
+
+  .eb-portfolio__gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    cursor: pointer;
+  }
+
+  .eb-portfolio__gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .eb-portfolio__gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .eb-portfolio__video-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 16/9;
+    background-color: #222222;
+  }
+
+  .eb-portfolio__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ============================================
+     SECTION STYLES
+     ============================================ */
+  .eb-portfolio__section {
+    padding: 80px 20px;
+    background-color: #ffffff;
+  }
+
+  .eb-portfolio__section--alt {
+    background-color: #f5f5f5;
+  }
+
+  .eb-portfolio__section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+  }
+
+  .eb-portfolio__section-title {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #222222;
+    margin: 0 0 15px 0;
+  }
+
+  .eb-portfolio__section-title--red {
+    color: #d64545;
+  }
+
+  .eb-portfolio__section-intro {
+    font-size: 17px;
+    color: #555555;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ============================================
+     PROJECT LAYOUTS
+     ============================================ */
+  .eb-portfolio__project {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .eb-portfolio__project:last-of-type {
+    border-bottom: none;
+  }
+
+  .eb-portfolio__project--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .eb-portfolio__project-images {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .eb-portfolio__project-image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+
+  .eb-portfolio__project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .eb-portfolio__project-image:hover img {
+    transform: scale(1.03);
+  }
+
+  .eb-portfolio__project-image--large {
+    grid-column: span 2;
+    aspect-ratio: 16/9;
+  }
+
+  .eb-portfolio__project-content {
+    flex: 1;
+  }
+
+  .eb-portfolio__project-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d64545;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+  }
+
+  .eb-portfolio__project-subtitle {
+    font-size: 16px;
+    color: #555555;
+    font-style: italic;
+    margin: 0 0 25px 0;
+  }
+
+  .eb-portfolio__project-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: project-counter;
+  }
+
+  .eb-portfolio__project-list li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333333;
+    counter-increment: project-counter;
+  }
+
+  .eb-portfolio__project-list li::before {
+    content: counter(project-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background-color: #d64545;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ============================================
+     CONTACT FORM SECTION
+     ============================================ */
+  .eb-portfolio__contact {
+    padding: 80px 20px;
+    background-color: #f5f5f5;
+  }
+
+  .eb-portfolio__contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .eb-portfolio__contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .eb-portfolio__contact-title {
+    font-size: 28px;
+    font-weight: 400;
+    color: #222222;
+    margin: 0 0 10px 0;
+  }
+
+  .eb-portfolio__contact-subtitle {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d64545;
+    margin: 0;
+  }
+
+  .eb-portfolio__contact-content {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+  }
+
+  .eb-portfolio__form {
+    flex: 1;
+    max-width: 550px;
+  }
+
+  .eb-portfolio__form-group {
+    margin-bottom: 25px;
+  }
+
+  .eb-portfolio__label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .eb-portfolio__label--required::after {
+    content: ' *';
+    color: #d64545;
+  }
+
+  .eb-portfolio__input,
+  .eb-portfolio__textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    color: #222222;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .eb-portfolio__input:focus,
+  .eb-portfolio__textarea:focus {
+    outline: none;
+    border-color: #d64545;
+    box-shadow: 0 0 0 3px rgba(214, 69, 69, 0.1);
+  }
+
+  .eb-portfolio__textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .eb-portfolio__checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .eb-portfolio__checkbox {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    accent-color: #d64545;
+    cursor: pointer;
+  }
+
+  .eb-portfolio__checkbox-label {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5;
+  }
+
+  .eb-portfolio__checkbox-label a {
+    color: #2068B2;
+    text-decoration: none;
+  }
+
+  .eb-portfolio__checkbox-label a:hover {
+    text-decoration: underline;
+  }
+
+  .eb-portfolio__submit {
+    display: inline-block;
+    background-color: #d64545;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .eb-portfolio__submit:hover {
+    background-color: #b83a3a;
+  }
+
+  .eb-portfolio__signatures {
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 20px;
+  }
+
+  .eb-portfolio__signature {
+    text-align: center;
+  }
+
+  .eb-portfolio__signature-image {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .eb-portfolio__signature-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #222222;
+    margin: 0;
+  }
+
+  /* ============================================
+     TABLET STYLES (768px - 1199px)
+     ============================================ */
+  @media (max-width: 1199px) {
+    .eb-portfolio__hero {
+      padding: 50px 20px;
+    }
+
+    .eb-portfolio__hero-title {
+      font-size: 36px;
+      letter-spacing: 3px;
+    }
+
+    .eb-portfolio__gallery-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .eb-portfolio__section {
+      padding: 60px 20px;
+    }
+
+    .eb-portfolio__section-title {
+      font-size: 28px;
+    }
+
+    .eb-portfolio__project {
+      gap: 35px;
+      padding: 50px 20px;
+    }
+
+    .eb-portfolio__project-title {
+      font-size: 20px;
+    }
+
+    .eb-portfolio__project-list li {
+      font-size: 14px;
+    }
+
+    .eb-portfolio__contact {
+      padding: 60px 20px;
+    }
+
+    .eb-portfolio__contact-content {
+      gap: 40px;
+    }
+
+    .eb-portfolio__signatures {
+      flex: 0 0 250px;
+    }
+  }
+
+  /* ============================================
+     MOBILE STYLES (below 768px)
+     ============================================ */
+  @media (max-width: 767px) {
+    .eb-portfolio__topbar {
+      font-size: 13px;
+      padding: 10px 15px;
+    }
+
+    .eb-portfolio__hero {
+      padding: 40px 15px;
+    }
+
+    .eb-portfolio__hero-title {
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+
+    .eb-portfolio__hero-subtitle {
+      font-size: 16px;
+    }
+
+    .eb-portfolio__gallery {
+      padding: 30px 15px 40px;
+    }
+
+    .eb-portfolio__gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .eb-portfolio__section {
+      padding: 40px 15px;
+    }
+
+    .eb-portfolio__section-title {
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+
+    .eb-portfolio__section-intro {
+      font-size: 15px;
+    }
+
+    .eb-portfolio__project {
+      flex-direction: column;
+      gap: 30px;
+      padding: 40px 15px;
+    }
+
+    .eb-portfolio__project--reverse {
+      flex-direction: column;
+    }
+
+    .eb-portfolio__project-images {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .eb-portfolio__project-title {
+      font-size: 18px;
+    }
+
+    .eb-portfolio__project-subtitle {
+      font-size: 15px;
+    }
+
+    .eb-portfolio__project-list li {
+      font-size: 14px;
+      padding-left: 32px;
+    }
+
+    .eb-portfolio__contact {
+      padding: 40px 15px;
+    }
+
+    .eb-portfolio__contact-title {
+      font-size: 24px;
+    }
+
+    .eb-portfolio__contact-subtitle {
+      font-size: 20px;
+    }
+
+    .eb-portfolio__contact-content {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .eb-portfolio__form {
+      max-width: 100%;
+    }
+
+    .eb-portfolio__signatures {
+      flex: none;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .eb-portfolio__submit {
+      width: 100%;
+    }
+  }
+
+  /* ============================================
+     SMALL MOBILE STYLES (below 480px)
+     ============================================ */
+  @media (max-width: 479px) {
+    .eb-portfolio__topbar {
+      font-size: 12px;
+      padding: 10px;
+    }
+
+    .eb-portfolio__hero {
+      padding: 30px 15px;
+    }
+
+    .eb-portfolio__hero-title {
+      font-size: 22px;
+      letter-spacing: 1.5px;
+    }
+
+    .eb-portfolio__hero-subtitle {
+      font-size: 14px;
+    }
+
+    .eb-portfolio__gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .eb-portfolio__section {
+      padding: 30px 15px;
+    }
+
+    .eb-portfolio__section-title {
+      font-size: 20px;
+      letter-spacing: 1.5px;
+    }
+
+    .eb-portfolio__project {
+      padding: 30px 15px;
+      gap: 25px;
+    }
+
+    .eb-portfolio__project-images {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .eb-portfolio__project-image--large {
+      grid-column: span 1;
+    }
+
+    .eb-portfolio__project-title {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .eb-portfolio__project-list li {
+      font-size: 13px;
+      padding-left: 30px;
+      margin-bottom: 15px;
+    }
+
+    .eb-portfolio__project-list li::before {
+      width: 22px;
+      height: 22px;
+      font-size: 12px;
+    }
+
+    .eb-portfolio__contact {
+      padding: 30px 15px;
+    }
+
+    .eb-portfolio__contact-title {
+      font-size: 20px;
+    }
+
+    .eb-portfolio__contact-subtitle {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .eb-portfolio__input,
+    .eb-portfolio__textarea {
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+
+    .eb-portfolio__submit {
+      font-size: 13px;
+      padding: 14px 30px;
+      letter-spacing: 1.5px;
+    }
+
+    .eb-portfolio__signatures {
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .eb-portfolio__signature-image {
+      max-width: 160px;
+    }
+  }
+</style>
+
+<section class="eb-portfolio">
+
+  <!-- ============================================
+       TOP BAR - Phone CTA
+       ============================================ -->
+  <div class="eb-portfolio__topbar">
+    RUFEN SIE UNS AN <a href="tel:+4991114898716">+49 (0) 911 14 89 87 16</a>
+  </div>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <div class="eb-portfolio__hero">
+    <h1 class="eb-portfolio__hero-title">Gastronomie Ausstattung</h1>
+    <p class="eb-portfolio__hero-subtitle">Galerie für erfolgreiche Projekte</p>
+  </div>
+
+  <!-- ============================================
+       GALLERY SLIDER
+       REPLACE ALL IMAGE URLs WITH YOUR WORDPRESS MEDIA LIBRARY URLs
+       ============================================ -->
+  <div class="eb-portfolio__gallery">
+    <div class="eb-portfolio__gallery-grid">
+      <!-- GALLERY IMAGE 1 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+1" alt="Gastronomie Projekt 1">
+      </div>
+      <!-- GALLERY IMAGE 2 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+2" alt="Gastronomie Projekt 2">
+      </div>
+      <!-- GALLERY IMAGE 3 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+3" alt="Gastronomie Projekt 3">
+      </div>
+      <!-- GALLERY IMAGE 4 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+4" alt="Gastronomie Projekt 4">
+      </div>
+      <!-- GALLERY IMAGE 5 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+5" alt="Gastronomie Projekt 5">
+      </div>
+      <!-- GALLERY IMAGE 6 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+6" alt="Gastronomie Projekt 6">
+      </div>
+      <!-- GALLERY IMAGE 7 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+7" alt="Gastronomie Projekt 7">
+      </div>
+      <!-- GALLERY IMAGE 8 - REPLACE src -->
+      <div class="eb-portfolio__gallery-item">
+        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+8" alt="Gastronomie Projekt 8">
+      </div>
+    </div>
+
+    <!-- VIDEO EMBED - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY VIDEO URL -->
+    <!-- For WordPress video: <video src="YOUR_VIDEO_URL" controls></video> -->
+    <!-- For YouTube: <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
+    <div class="eb-portfolio__video-wrapper">
+      <video class="eb-portfolio__video" controls poster="https://via.placeholder.com/800x450/222222/ffffff?text=Video+Thumbnail">
+        <source src="REPLACE_WITH_YOUR_VIDEO_URL.mp4" type="video/mp4">
+        Ihr Browser unterstützt das Video-Tag nicht.
+      </video>
+    </div>
+  </div>
+
+  <!-- ============================================
+       INTRO SECTION
+       ============================================ -->
+  <div class="eb-portfolio__section">
+    <div class="eb-portfolio__section-header">
+      <h2 class="eb-portfolio__section-title">Galerie für erfolgreiche Konzepte</h2>
+      <p class="eb-portfolio__section-intro">Italienisches Design vereint mit Funktionalität.</p>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PROJECT 1
+       ============================================ -->
+  <div class="eb-portfolio__section eb-portfolio__section--alt">
+    <div class="eb-portfolio__project">
+      <div class="eb-portfolio__project-images">
+        <!-- PROJECT 1 - IMAGE 1 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P1+Image+1" alt="Café Einrichtung">
+        </div>
+        <!-- PROJECT 1 - IMAGE 2 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P1+Image+2" alt="Gelateria Einrichtung">
+        </div>
+        <!-- PROJECT 1 - IMAGE 3 (LARGE) - REPLACE src -->
+        <div class="eb-portfolio__project-image eb-portfolio__project-image--large">
+          <img src="https://via.placeholder.com/800x450/f5f5f5/999999?text=P1+Image+3+Large" alt="Bar Restaurant Einrichtung">
+        </div>
+      </div>
+      <div class="eb-portfolio__project-content">
+        <h3 class="eb-portfolio__project-title">Perfekt für Cafés, Gelateria, Bars, Restaurants</h3>
+        <ol class="eb-portfolio__project-list">
+          <li>Elegante Holz-Theke mit goldenen Akzenten für ein luxuriöses Ambiente</li>
+          <li>Professionelle Barista-Station mit integrierter Kaffeemaschine & Arbeitsfläche</li>
+          <li>Hochwertige Eisvitrine mit Glasabdeckung – ideal für Gelato, Desserts oder Patisserie</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PROJECT 2
+       ============================================ -->
+  <div class="eb-portfolio__section">
+    <div class="eb-portfolio__project eb-portfolio__project--reverse">
+      <div class="eb-portfolio__project-images">
+        <!-- PROJECT 2 - IMAGE 1 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P2+Image+1" alt="Bistro Einrichtung">
+        </div>
+        <!-- PROJECT 2 - IMAGE 2 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P2+Image+2" alt="Eisdiele Einrichtung">
+        </div>
+        <!-- PROJECT 2 - IMAGE 3 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P2+Image+3" alt="Restaurant Einrichtung">
+        </div>
+        <!-- PROJECT 2 - IMAGE 4 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P2+Image+4" alt="Industrial Design">
+        </div>
+      </div>
+      <div class="eb-portfolio__project-content">
+        <h3 class="eb-portfolio__project-title">Perfekt für Cafés, Bistros, Gelateria, Eisdielen oder Restaurants uvm.</h3>
+        <p class="eb-portfolio__project-subtitle">Moderne Gastronomieeinrichtung im Industrial-Design</p>
+        <ol class="eb-portfolio__project-list">
+          <li>Betonoptik-Theke mit dunklen Akzenten – stilvolle, urbane Ästhetik</li>
+          <li>Große Arbeitsfläche mit Glasvitrine – ideal für Frischetheken, Patisserie oder Food-Präsentation</li>
+          <li>Hochwertige Eisvitrine mit Glasabdeckung – ideal für Gelato, Desserts oder Patisserie</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PROJECT 3
+       ============================================ -->
+  <div class="eb-portfolio__section eb-portfolio__section--alt">
+    <div class="eb-portfolio__project">
+      <div class="eb-portfolio__project-images">
+        <!-- PROJECT 3 - IMAGE 1 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P3+Image+1" alt="Patisserie Einrichtung">
+        </div>
+        <!-- PROJECT 3 - IMAGE 2 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P3+Image+2" alt="Bäckerei Einrichtung">
+        </div>
+        <!-- PROJECT 3 - IMAGE 3 (LARGE) - REPLACE src -->
+        <div class="eb-portfolio__project-image eb-portfolio__project-image--large">
+          <img src="https://via.placeholder.com/800x450/f5f5f5/999999?text=P3+Image+3+Large" alt="Gehobenes Café Einrichtung">
+        </div>
+      </div>
+      <div class="eb-portfolio__project-content">
+        <h3 class="eb-portfolio__project-title">Perfekt für Patisserien, Eisdielen, Bäckereien und gehobene Cafés</h3>
+        <p class="eb-portfolio__project-subtitle">Luxus vereint mit Funktionalität.</p>
+        <ol class="eb-portfolio__project-list">
+          <li>Edle Kühlvitrinen mit Glasaufbau – ideal für Torten, Desserts und handgemachtes Gelato</li>
+          <li>Integrierte Kühltechnik zur optimalen Frische- und Temperaturkontrolle</li>
+          <li>Perfekte Mischung aus Glas, Metall & Stein für eine zeitlose, gehobene Ästhetik</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PROJECT 4
+       ============================================ -->
+  <div class="eb-portfolio__section">
+    <div class="eb-portfolio__project eb-portfolio__project--reverse">
+      <div class="eb-portfolio__project-images">
+        <!-- PROJECT 4 - IMAGE 1 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P4+Image+1" alt="Tropisches Café">
+        </div>
+        <!-- PROJECT 4 - IMAGE 2 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P4+Image+2" alt="Pastellfarben Einrichtung">
+        </div>
+        <!-- PROJECT 4 - IMAGE 3 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P4+Image+3" alt="Barista Station">
+        </div>
+        <!-- PROJECT 4 - IMAGE 4 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P4+Image+4" alt="Wandregale">
+        </div>
+      </div>
+      <div class="eb-portfolio__project-content">
+        <h3 class="eb-portfolio__project-title">Patisserieeinrichtung mit tropischem Flair</h3>
+        <p class="eb-portfolio__project-subtitle">Café- & Patisserie-Einrichtung kombiniert sanfte Pastelltöne</p>
+        <ol class="eb-portfolio__project-list">
+          <li>Pastellrosa Theke mit weißer Marmor-Arbeitsfläche – eine elegante, moderne Kombination</li>
+          <li>Integrierte Barista-Station mit Siebträgermaschine für exzellenten Kaffeegenuss</li>
+          <li>Weiß-goldene Wandregale mit Glasböden zur stilvollen Präsentation von Weinen, Gläsern & Deko</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PROJECT 5
+       ============================================ -->
+  <div class="eb-portfolio__section eb-portfolio__section--alt">
+    <div class="eb-portfolio__project">
+      <div class="eb-portfolio__project-images">
+        <!-- PROJECT 5 - IMAGE 1 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P5+Image+1" alt="Hotel Einrichtung">
+        </div>
+        <!-- PROJECT 5 - IMAGE 2 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P5+Image+2" alt="Café Bar">
+        </div>
+        <!-- PROJECT 5 - IMAGE 3 (LARGE) - REPLACE src -->
+        <div class="eb-portfolio__project-image eb-portfolio__project-image--large">
+          <img src="https://via.placeholder.com/800x450/f5f5f5/999999?text=P5+Image+3+Large" alt="Vielfältige Projekte">
+        </div>
+      </div>
+      <div class="eb-portfolio__project-content">
+        <h3 class="eb-portfolio__project-title">Einrichtungen für Hotels, Eisdielen, Bäckereien, Gelaterias und Cafés</h3>
+        <p class="eb-portfolio__project-subtitle">Vielfältige Projekte</p>
+        <ol class="eb-portfolio__project-list">
+          <li>Moderne Café- & Bar-Einrichtungen – Stilvolle und funktionale Lösungen</li>
+          <li>Hochwertige Restaurant- & Hotel-Ausstattung – Design trifft Funktionalität</li>
+          <li>Individuelle Theken & Vitrinen – Perfekte Präsentation für Genussprodukte</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       PROJECT 6
+       ============================================ -->
+  <div class="eb-portfolio__section">
+    <div class="eb-portfolio__project eb-portfolio__project--reverse">
+      <div class="eb-portfolio__project-images">
+        <!-- PROJECT 6 - IMAGE 1 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P6+Image+1" alt="Feinkostgeschäft">
+        </div>
+        <!-- PROJECT 6 - IMAGE 2 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P6+Image+2" alt="Goldene Nischen">
+        </div>
+        <!-- PROJECT 6 - IMAGE 3 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=P6+Image+3" alt="Glasaufbauten">
+        </div>
+        <!-- PROJECT 6 - IMAGE 4 - REPLACE src -->
+        <div class="eb-portfolio__project-image">
+          <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=P6+Image+4" alt="Flexible Module">
+        </div>
+      </div>
+      <div class="eb-portfolio__project-content">
+        <h3 class="eb-portfolio__project-title">Perfekt für Patisserien, Eisdielen und gehobene Feinkostgeschäfte</h3>
+        <p class="eb-portfolio__project-subtitle">Café- & Patisserie-Einrichtung kombiniert sanfte Pastelltöne</p>
+        <ol class="eb-portfolio__project-list">
+          <li>Abgerundete, goldgerahmte Nischen mit Spiegelrückwand – optische Vergrößerung & luxuriöse Ästhetik</li>
+          <li>Großflächige Glasaufbauten für perfekte Sichtbarkeit – maximiert die Präsentation von Spezialitäten</li>
+          <li>Flexible Module & individuell anpassbare Lösungen für verschiedene Gastronomiebereiche</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       CONTACT FORM SECTION
+       ============================================ -->
+  <div class="eb-portfolio__contact">
+    <div class="eb-portfolio__contact-container">
+      <div class="eb-portfolio__contact-header">
+        <h2 class="eb-portfolio__contact-title">Sind Sie sich unsicher?</h2>
+        <h3 class="eb-portfolio__contact-subtitle">Lassen Sie sich von Experten beraten!</h3>
+      </div>
+
+      <div class="eb-portfolio__contact-content">
+        <!-- CONTACT FORM - Update action to your form handler -->
+        <form class="eb-portfolio__form" action="REPLACE_WITH_YOUR_FORM_HANDLER_URL" method="POST">
+
+          <div class="eb-portfolio__form-group">
+            <label class="eb-portfolio__label eb-portfolio__label--required" for="eb-name">Name</label>
+            <input type="text" id="eb-name" name="name" class="eb-portfolio__input" required aria-required="true">
+          </div>
+
+          <div class="eb-portfolio__form-group">
+            <label class="eb-portfolio__label" for="eb-email">Email</label>
+            <input type="email" id="eb-email" name="email" class="eb-portfolio__input">
+          </div>
+
+          <div class="eb-portfolio__form-group">
+            <label class="eb-portfolio__label eb-portfolio__label--required" for="eb-phone">Telefonnummer</label>
+            <input type="tel" id="eb-phone" name="phone" class="eb-portfolio__input" required aria-required="true">
+          </div>
+
+          <div class="eb-portfolio__form-group">
+            <label class="eb-portfolio__label" for="eb-message">Nachricht</label>
+            <textarea id="eb-message" name="message" class="eb-portfolio__textarea"></textarea>
+          </div>
+
+          <div class="eb-portfolio__checkbox-group">
+            <input type="checkbox" id="eb-privacy" name="privacy" class="eb-portfolio__checkbox" required aria-required="true">
+            <label class="eb-portfolio__checkbox-label" for="eb-privacy">
+              Ich stimme der <a href="REPLACE_WITH_PRIVACY_POLICY_URL" target="_blank">Datenverarbeitung</a> zu. *
+            </label>
+          </div>
+
+          <button type="submit" class="eb-portfolio__submit">Unverbindlich Anfragen</button>
+        </form>
+
+        <div class="eb-portfolio__signatures">
+          <!-- SIGNATURE 1 - REPLACE src WITH YOUR SIGNATURE IMAGE URL -->
+          <div class="eb-portfolio__signature">
+            <img class="eb-portfolio__signature-image" src="https://via.placeholder.com/200x80/ffffff/222222?text=Signature" alt="Francesco Landolfo Unterschrift">
+            <p class="eb-portfolio__signature-name">Francesco Landolfo</p>
+          </div>
+          <!-- SIGNATURE 2 - REPLACE src WITH YOUR SIGNATURE IMAGE URL -->
+          <div class="eb-portfolio__signature">
+            <img class="eb-portfolio__signature-image" src="https://via.placeholder.com/200x80/ffffff/222222?text=Signature" alt="Vincenzo Penna Unterschrift">
+            <p class="eb-portfolio__signature-name">Vincenzo Penna</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
