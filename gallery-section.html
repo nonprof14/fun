@@ -1,0 +1,358 @@
+<style>
+  /* ============================================
+     EISBEDARF GALLERY SECTION
+     WordPress-embeddable component
+     ============================================ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap');
+
+  .eb-gallery {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .eb-gallery *,
+  .eb-gallery *::before,
+  .eb-gallery *::after {
+    box-sizing: border-box;
+  }
+
+  .eb-gallery__header {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #222222;
+    text-align: center;
+    margin: 0 0 40px 0;
+  }
+
+  .eb-gallery__grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .eb-gallery__column {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eb-gallery__images {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+  }
+
+  .eb-gallery__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    min-height: 180px;
+  }
+
+  .eb-gallery__image-wrapper--large {
+    flex: 1.5;
+    min-height: 250px;
+  }
+
+  .eb-gallery__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .eb-gallery__caption {
+    background-color: #1a2f35;
+    padding: 18px 20px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .eb-gallery__cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+  }
+
+  .eb-gallery__button {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .eb-gallery__button--primary {
+    background-color: #c9a227;
+    color: #ffffff;
+    border: none;
+  }
+
+  .eb-gallery__button--primary:hover {
+    background-color: #b8922a;
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  .eb-gallery__button--secondary {
+    background-color: transparent;
+    color: #333333;
+    border: none;
+    position: relative;
+  }
+
+  .eb-gallery__button--secondary::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 35px;
+    right: 35px;
+    height: 1px;
+    background-color: #333333;
+    transition: background-color 0.3s ease;
+  }
+
+  .eb-gallery__button--secondary:hover {
+    color: #c9a227;
+    text-decoration: none;
+  }
+
+  .eb-gallery__button--secondary:hover::after {
+    background-color: #c9a227;
+  }
+
+  /* ============================================
+     TABLET STYLES (768px - 1199px)
+     ============================================ */
+  @media (max-width: 1199px) {
+    .eb-gallery {
+      padding: 50px 30px;
+    }
+
+    .eb-gallery__header {
+      font-size: 34px;
+      letter-spacing: 6px;
+      margin-bottom: 35px;
+    }
+
+    .eb-gallery__grid {
+      gap: 12px;
+    }
+
+    .eb-gallery__column:nth-child(3) {
+      display: none;
+    }
+
+    .eb-gallery__column {
+      max-width: 450px;
+    }
+
+    .eb-gallery__caption {
+      font-size: 13px;
+      padding: 15px 18px;
+    }
+
+    .eb-gallery__cta {
+      margin-top: 40px;
+    }
+  }
+
+  /* ============================================
+     MOBILE STYLES (below 768px)
+     ============================================ */
+  @media (max-width: 767px) {
+    .eb-gallery {
+      padding: 40px 20px;
+    }
+
+    .eb-gallery__header {
+      font-size: 28px;
+      letter-spacing: 4px;
+      margin-bottom: 30px;
+    }
+
+    .eb-gallery__grid {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .eb-gallery__column:nth-child(2),
+    .eb-gallery__column:nth-child(3) {
+      display: none;
+    }
+
+    .eb-gallery__column {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .eb-gallery__image-wrapper {
+      min-height: 200px;
+    }
+
+    .eb-gallery__image-wrapper--large {
+      min-height: 280px;
+    }
+
+    .eb-gallery__cta {
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 35px;
+    }
+
+    .eb-gallery__button {
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+    }
+
+    .eb-gallery__button--secondary::after {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      width: calc(100% - 70px);
+    }
+  }
+
+  /* ============================================
+     SMALL MOBILE STYLES (below 480px)
+     ============================================ */
+  @media (max-width: 479px) {
+    .eb-gallery {
+      padding: 30px 15px;
+    }
+
+    .eb-gallery__header {
+      font-size: 24px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    .eb-gallery__images {
+      gap: 8px;
+    }
+
+    .eb-gallery__image-wrapper {
+      min-height: 160px;
+    }
+
+    .eb-gallery__image-wrapper--large {
+      min-height: 220px;
+    }
+
+    .eb-gallery__caption {
+      font-size: 13px;
+      padding: 14px 15px;
+      line-height: 1.4;
+    }
+
+    .eb-gallery__cta {
+      margin-top: 30px;
+      gap: 12px;
+    }
+
+    .eb-gallery__button {
+      font-size: 12px;
+      padding: 14px 25px;
+      letter-spacing: 1.5px;
+    }
+
+    .eb-gallery__button--secondary::after {
+      bottom: 10px;
+      width: calc(100% - 50px);
+    }
+  }
+</style>
+
+<section class="eb-gallery">
+  <h2 class="eb-gallery__header">Galerie</h2>
+
+  <div class="eb-gallery__grid">
+
+    <!-- Column 1 (Always visible) -->
+    <div class="eb-gallery__column">
+      <div class="eb-gallery__images">
+        <div class="eb-gallery__image-wrapper eb-gallery__image-wrapper--large">
+          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x300/f5f0e8/333333?text=Image+1" alt="Café Einrichtung">
+        </div>
+        <div class="eb-gallery__image-wrapper">
+          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x250/f5f0e8/333333?text=Image+2" alt="Gelateria Einrichtung">
+        </div>
+      </div>
+      <div class="eb-gallery__caption">
+        Einrichtung für Cafés, Gelateria, Bars, Restaurants
+      </div>
+    </div>
+
+    <!-- Column 2 (Hidden on mobile) -->
+    <div class="eb-gallery__column">
+      <div class="eb-gallery__images">
+        <div class="eb-gallery__image-wrapper">
+          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x250/f5f0e8/333333?text=Image+3" alt="Bistro Einrichtung">
+        </div>
+        <div class="eb-gallery__image-wrapper eb-gallery__image-wrapper--large">
+          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x300/f5f0e8/333333?text=Image+4" alt="Eisdiele Einrichtung">
+        </div>
+      </div>
+      <div class="eb-gallery__caption">
+        Einrichtung für Cafés, Bistros, Gelateria, Eisdielen oder Restaurants uvm.
+      </div>
+    </div>
+
+    <!-- Column 3 (Hidden on tablet & mobile) -->
+    <div class="eb-gallery__column">
+      <div class="eb-gallery__images">
+        <div class="eb-gallery__image-wrapper eb-gallery__image-wrapper--large">
+          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x300/f5f0e8/333333?text=Image+5" alt="Patisserie Einrichtung">
+        </div>
+        <div class="eb-gallery__image-wrapper">
+          <!-- REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY URL -->
+          <img class="eb-gallery__image" src="https://via.placeholder.com/400x250/f5f0e8/333333?text=Image+6" alt="Bäckerei Einrichtung">
+        </div>
+      </div>
+      <div class="eb-gallery__caption">
+        Einrichtung für Patisserien, Eisdielen, Bäckereien und gehobene Cafés
+      </div>
+    </div>
+
+  </div>
+
+  <div class="eb-gallery__cta">
+    <a href="https://eisbedarf.shop/galerie" class="eb-gallery__button eb-gallery__button--primary">
+      Mehr Bilder
+    </a>
+    <!-- REPLACE href WITH YOUR PDF URL FROM WORDPRESS MEDIA LIBRARY -->
+    <a href="PDF_URL_PLACEHOLDER" class="eb-gallery__button eb-gallery__button--secondary" target="_blank">
+      Design-Katalog Herunterladen
+    </a>
+  </div>
+
+</section>
