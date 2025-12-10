@@ -71,8 +71,28 @@
     font-size: 18px;
     font-weight: 400;
     color: #555555;
-    margin: 0;
+    margin: 0 0 25px 0;
     font-style: italic;
+  }
+
+  .eb-portfolio__hero-button {
+    display: inline-block;
+    background-color: #d64545;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 16px 35px;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .eb-portfolio__hero-button:hover {
+    background-color: #b83a3a;
+    color: #ffffff;
+    text-decoration: none;
   }
 
   /* ============================================
@@ -483,6 +503,12 @@
       font-size: 16px;
     }
 
+    .eb-portfolio__hero-button {
+      font-size: 12px;
+      padding: 14px 25px;
+      letter-spacing: 1.5px;
+    }
+
     .eb-portfolio__gallery {
       padding: 30px 15px 40px;
     }
@@ -555,6 +581,12 @@
       font-size: 14px;
     }
 
+    .eb-portfolio__hero-button {
+      font-size: 11px;
+      padding: 12px 20px;
+      letter-spacing: 1px;
+    }
+
     .eb-portfolio__gallery-grid {
       grid-template-columns: 1fr 1fr;
       gap: 8px;
@@ -617,6 +649,10 @@
   <div class="eb-portfolio__hero">
     <h1 class="eb-portfolio__hero-title">Gastronomie Ausstattung</h1>
     <p class="eb-portfolio__hero-subtitle">Galerie für erfolgreiche Projekte</p>
+    <!-- REPLACE href WITH YOUR PDF URL FROM WORDPRESS MEDIA LIBRARY -->
+    <a href="PDF_URL_PLACEHOLDER" class="eb-portfolio__hero-button" target="_blank">
+      Katalog für Stühle & Tische herunterladen
+    </a>
   </div>
 
   <!-- ============================================
