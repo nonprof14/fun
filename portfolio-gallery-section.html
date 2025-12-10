@@ -125,6 +125,158 @@
   }
 
   /* ============================================
+     LIGHTBOX STYLES
+     ============================================ */
+  .eb-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 99999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .eb-lightbox--active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .eb-lightbox__container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .eb-lightbox__image {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+  }
+
+  .eb-lightbox__image--zoomed {
+    cursor: zoom-out;
+    transform: scale(1.5);
+  }
+
+  .eb-lightbox__close {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100000;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .eb-lightbox__close:hover {
+    background-color: #d64545;
+    border-color: #d64545;
+    transform: rotate(90deg);
+  }
+
+  .eb-lightbox__nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100000;
+  }
+
+  .eb-lightbox__nav:hover {
+    background-color: #d64545;
+    border-color: #d64545;
+  }
+
+  .eb-lightbox__nav--prev {
+    left: 20px;
+  }
+
+  .eb-lightbox__nav--next {
+    right: 20px;
+  }
+
+  .eb-lightbox__zoom-hint {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 14px;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .eb-lightbox__counter {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 767px) {
+    .eb-lightbox__close {
+      top: 15px;
+      right: 15px;
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
+    }
+
+    .eb-lightbox__nav {
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+    }
+
+    .eb-lightbox__nav--prev {
+      left: 10px;
+    }
+
+    .eb-lightbox__nav--next {
+      right: 10px;
+    }
+
+    .eb-lightbox__image--zoomed {
+      transform: scale(2);
+    }
+  }
+
+  /* ============================================
      SECTION STYLES
      ============================================ */
   .eb-portfolio__section {
@@ -467,51 +619,36 @@
   </div>
 
   <!-- ============================================
-       GALLERY SLIDER
-       REPLACE ALL IMAGE URLs WITH YOUR WORDPRESS MEDIA LIBRARY URLs
+       GALLERY SLIDER (Click images to open lightbox)
        ============================================ -->
   <div class="eb-portfolio__gallery">
-    <div class="eb-portfolio__gallery-grid">
-      <!-- GALLERY IMAGE 1 - REPLACE src -->
+    <div class="eb-portfolio__gallery-grid" id="ebGalleryGrid">
       <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+1" alt="Gastronomie Projekt 1">
+        <img src="https://eisbedarf.shop/wp-content/uploads/2025/12/klassische-Einrichtung.webp" alt="Klassische Gastronomie Einrichtung">
       </div>
-      <!-- GALLERY IMAGE 2 - REPLACE src -->
       <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+2" alt="Gastronomie Projekt 2">
+        <img src="https://eisbedarf.shop/wp-content/uploads/2025/12/echte-Gastronomie-Ausstattung6.webp" alt="Gastronomie Ausstattung">
       </div>
-      <!-- GALLERY IMAGE 3 - REPLACE src -->
       <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+3" alt="Gastronomie Projekt 3">
+        <img src="https://eisbedarf.shop/wp-content/uploads/2025/12/echte-Gastronomie-Ausstattung2.webp" alt="Gastronomie Projekt">
       </div>
-      <!-- GALLERY IMAGE 4 - REPLACE src -->
       <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+4" alt="Gastronomie Projekt 4">
+        <img src="https://eisbedarf.shop/wp-content/uploads/2025/12/echte-Gastronomie-Ausstattung1.webp" alt="Gastronomie Einrichtung">
       </div>
-      <!-- GALLERY IMAGE 5 - REPLACE src -->
       <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+5" alt="Gastronomie Projekt 5">
+        <img src="https://eisbedarf.shop/wp-content/uploads/2025/12/echte-Gastronomie-Ausstattung5.webp" alt="Gastronomie Design">
       </div>
-      <!-- GALLERY IMAGE 6 - REPLACE src -->
       <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+6" alt="Gastronomie Projekt 6">
+        <img src="https://eisbedarf.shop/wp-content/uploads/2025/12/echte-Gastronomie-Ausstattung3.webp" alt="Gastronomie Ausstattung">
       </div>
-      <!-- GALLERY IMAGE 7 - REPLACE src -->
       <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/f5f5f5/999999?text=Gallery+7" alt="Gastronomie Projekt 7">
-      </div>
-      <!-- GALLERY IMAGE 8 - REPLACE src -->
-      <div class="eb-portfolio__gallery-item">
-        <img src="https://via.placeholder.com/400x300/e8e8e8/999999?text=Gallery+8" alt="Gastronomie Projekt 8">
+        <img src="https://eisbedarf.shop/wp-content/uploads/2025/12/Siebtragermaschine-fur-Cafes.webp" alt="Siebträgermaschine für Cafés">
       </div>
     </div>
 
-    <!-- VIDEO EMBED - REPLACE src WITH YOUR WORDPRESS MEDIA LIBRARY VIDEO URL -->
-    <!-- For WordPress video: <video src="YOUR_VIDEO_URL" controls></video> -->
-    <!-- For YouTube: <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe> -->
     <div class="eb-portfolio__video-wrapper">
-      <video class="eb-portfolio__video" controls poster="https://via.placeholder.com/800x450/222222/ffffff?text=Video+Thumbnail">
-        <source src="REPLACE_WITH_YOUR_VIDEO_URL.mp4" type="video/mp4">
+      <video class="eb-portfolio__video" controls poster="https://eisbedarf.shop/wp-content/uploads/2025/12/echte-Gastronomie-Ausstattung6.webp">
+        <source src="https://eisbedarf.shop/wp-content/uploads/2025/12/Gastronomieeinrichtung-komplett-Video.mp4" type="video/mp4">
         Ihr Browser unterstützt das Video-Tag nicht.
       </video>
     </div>
@@ -724,4 +861,145 @@
     </div>
   </div>
 
+  <!-- ============================================
+       LIGHTBOX MODAL
+       ============================================ -->
+  <div class="eb-lightbox" id="ebLightbox">
+    <button class="eb-lightbox__close" id="ebLightboxClose" aria-label="Schließen">×</button>
+    <button class="eb-lightbox__nav eb-lightbox__nav--prev" id="ebLightboxPrev" aria-label="Vorheriges Bild">‹</button>
+    <button class="eb-lightbox__nav eb-lightbox__nav--next" id="ebLightboxNext" aria-label="Nächstes Bild">›</button>
+    <div class="eb-lightbox__container">
+      <img class="eb-lightbox__image" id="ebLightboxImage" src="" alt="Vollbild Ansicht">
+    </div>
+    <div class="eb-lightbox__zoom-hint">Klicken zum Zoomen</div>
+    <div class="eb-lightbox__counter" id="ebLightboxCounter"></div>
+  </div>
+
 </section>
+
+<script>
+(function() {
+  // Lightbox functionality
+  const lightbox = document.getElementById('ebLightbox');
+  const lightboxImage = document.getElementById('ebLightboxImage');
+  const lightboxClose = document.getElementById('ebLightboxClose');
+  const lightboxPrev = document.getElementById('ebLightboxPrev');
+  const lightboxNext = document.getElementById('ebLightboxNext');
+  const lightboxCounter = document.getElementById('ebLightboxCounter');
+  const galleryItems = document.querySelectorAll('.eb-portfolio__gallery-item img');
+
+  let currentIndex = 0;
+  let images = [];
+  let isZoomed = false;
+
+  // Collect all gallery images
+  galleryItems.forEach((img, index) => {
+    images.push(img.src);
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  // Open lightbox
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImage.src = images[currentIndex];
+    lightboxImage.classList.remove('eb-lightbox__image--zoomed');
+    isZoomed = false;
+    updateCounter();
+    lightbox.classList.add('eb-lightbox--active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close lightbox
+  function closeLightbox() {
+    lightbox.classList.remove('eb-lightbox--active');
+    document.body.style.overflow = '';
+    isZoomed = false;
+    lightboxImage.classList.remove('eb-lightbox__image--zoomed');
+  }
+
+  // Navigate to previous image
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImage.src = images[currentIndex];
+    lightboxImage.classList.remove('eb-lightbox__image--zoomed');
+    isZoomed = false;
+    updateCounter();
+  }
+
+  // Navigate to next image
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImage.src = images[currentIndex];
+    lightboxImage.classList.remove('eb-lightbox__image--zoomed');
+    isZoomed = false;
+    updateCounter();
+  }
+
+  // Toggle zoom
+  function toggleZoom() {
+    isZoomed = !isZoomed;
+    lightboxImage.classList.toggle('eb-lightbox__image--zoomed', isZoomed);
+  }
+
+  // Update counter
+  function updateCounter() {
+    lightboxCounter.textContent = (currentIndex + 1) + ' / ' + images.length;
+  }
+
+  // Event listeners
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', prevImage);
+  lightboxNext.addEventListener('click', nextImage);
+  lightboxImage.addEventListener('click', toggleZoom);
+
+  // Close on background click
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('eb-lightbox--active')) return;
+
+    switch(e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        prevImage();
+        break;
+      case 'ArrowRight':
+        nextImage();
+        break;
+    }
+  });
+
+  // Touch/swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+  }
+})();
+</script>
